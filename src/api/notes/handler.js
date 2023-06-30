@@ -1,16 +1,12 @@
 /* eslint-disable no-underscore-dangle */
-
+const autoBind = require('auto-bind');
 /* eslint-disable no-unused-vars */
 class NotesHandler {
   constructor(service, validator) {
     this._service = service;
     this._validator = validator;
 
-    this.postNoteHandler = this.postNoteHandler.bind(this);
-    this.getNotesHandler = this.getNotesHandler.bind(this);
-    this.getNoteByIdHandler = this.getNoteByIdHandler.bind(this);
-    this.putNoteByIdHandler = this.putNoteByIdHandler.bind(this);
-    this.deleteNoteByIdHandler = this.deleteNoteByIdHandler.bind(this);
+    autoBind(this);
   }
 
   async postNoteHandler(request, h) {
